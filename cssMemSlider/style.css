@@ -21,7 +21,7 @@ body {
 }
 
 .main {
-    padding: 6rem 1rem;
+    padding: 5rem 1rem;
 }
 
 .slider {
@@ -33,7 +33,7 @@ body {
     border-radius: 0.5rem;
     display: grid;
     grid-template-columns: 2fr 1fr;
-    grid-template-rows: 1fr 3rem;
+    grid-template-rows: 1fr 5rem;
     gap: 1rem;
     overflow: hidden;
 }
@@ -53,19 +53,22 @@ body {
     width: 100%;
     height: 32rem;
     border-radius: 0.5rem;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
     display: none;
 }
 .slide__img--slide1 {
-    background-color: chartreuse;
+    background-image: url(assets/slide-universe.jpg);
 }
 .slide__img--slide2 {
-    background-color: aqua;
+    background-image: url(assets/slide-black-hole.png);
 }
 .slide__img--slide3 {
-    background-color: coral;
+    background-image: url(assets/slide-planets.png);
 }
 .slide__img--slide4 {
-    background-color: blueviolet;
+    background-image: url(assets/slide-meme.png);
 }
 
 .title__container {
@@ -73,6 +76,7 @@ body {
 }
 .title__text {
     color: #ffffff;
+    font-size: 1.5rem;
     display: none;
 }
 
@@ -98,7 +102,7 @@ body {
     border-color: #ffffff;
 }
 
-/* Animation style start */
+/* Animation styles start */
 #dot1:checked ~ .slide__container .slide__img--slide1,
 #dot2:checked ~ .slide__container .slide__img--slide2,
 #dot3:checked ~ .slide__container .slide__img--slide3,
@@ -121,8 +125,6 @@ body {
 #dot4:checked ~ .control__container .control__item--dot4 .control__circle {
     background: none;
 }
-
-
 @keyframes move-right {
     0% {
         transform: translateX(1000px); 
@@ -133,4 +135,4 @@ body {
         opacity: 1;
     }
 }
-/* Animation style end */
+/* Animation styles end */
