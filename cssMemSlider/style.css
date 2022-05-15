@@ -30,12 +30,11 @@ body {
     margin: 0 auto;
     padding: 1.5rem;
     background-color: #25282a;
-    border-radius: 2%;
+    border-radius: 0.5rem;
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-template-rows: 1fr 3rem;
     gap: 1rem;
-    /* align-items: center; */
     overflow: hidden;
 }
 
@@ -45,6 +44,7 @@ body {
 
 .slide__container {
     width: 100%;
+    height: 32rem;
     grid-column: 1/3;
     justify-self: center;
     display: flex;
@@ -52,11 +52,11 @@ body {
 .slide__img {
     width: 100%;
     height: 32rem;
+    border-radius: 0.5rem;
     display: none;
 }
 .slide__img--slide1 {
     background-color: chartreuse;
-    display: block;
 }
 .slide__img--slide2 {
     background-color: aqua;
@@ -75,9 +75,6 @@ body {
     color: #ffffff;
     display: none;
 }
-.title__text--text1 {
-    display: block;
-}
 
 .control__container {
     justify-self: end;
@@ -87,7 +84,6 @@ body {
     padding: 0.5rem;
     cursor: pointer;
 }
-
 .control__circle {
     display: block;
     width: 1rem;
@@ -96,15 +92,45 @@ body {
     border: 0.2rem solid #71abfe;
     background: #71abfe;
     transition: all 0.3s;
-
 }
-
-
 .control__item:hover .control__circle{
     background-color: #ffffff;
     border-color: #ffffff;
 }
 
-.control__item--dot1 .control__circle {
+/* Animation style start */
+#dot1:checked ~ .slide__container .slide__img--slide1,
+#dot2:checked ~ .slide__container .slide__img--slide2,
+#dot3:checked ~ .slide__container .slide__img--slide3,
+#dot4:checked ~ .slide__container .slide__img--slide4 {
+    display: block;
+    animation-name: move-right;
+    animation-duration: 0.5s;
+}
+#dot1:checked ~ .title__container .title__text--text1,
+#dot2:checked ~ .title__container .title__text--text2,
+#dot3:checked ~ .title__container .title__text--text3,
+#dot4:checked ~ .title__container .title__text--text4 {
+    display: block;
+    animation-name: move-right;
+    animation-duration: 0.5s;
+}
+#dot1:checked ~ .control__container .control__item--dot1 .control__circle,
+#dot2:checked ~ .control__container .control__item--dot2 .control__circle,
+#dot3:checked ~ .control__container .control__item--dot3 .control__circle,
+#dot4:checked ~ .control__container .control__item--dot4 .control__circle {
     background: none;
 }
+
+
+@keyframes move-right {
+    0% {
+        transform: translateX(1000px); 
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+/* Animation style end */
