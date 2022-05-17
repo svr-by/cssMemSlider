@@ -52,7 +52,6 @@ body {
     width: 100%;
     grid-area: slides;
     justify-self: center;
-    /* display: flex; */
 }
 .slide__img {
     width: 100%;
@@ -109,6 +108,9 @@ body {
     background-color: #ffffff;
     border-color: #ffffff;
 }
+.control__item:active .control__circle{
+    background-color: #8c8d17;
+}
 
 /* Animation styles start */
 #dot1:checked ~ .slide__container .slide__img--slide1,
@@ -127,12 +129,13 @@ body {
     animation-name: move-right;
     animation-duration: 0.5s;
 }
-#dot1:checked ~ .control__container .control__item--dot1 .control__circle,
-#dot2:checked ~ .control__container .control__item--dot2 .control__circle,
-#dot3:checked ~ .control__container .control__item--dot3 .control__circle,
-#dot4:checked ~ .control__container .control__item--dot4 .control__circle {
+#dot1:checked ~ .control__container:not(:active) .control__item--dot1 .control__circle,
+#dot2:checked ~ .control__container:not(:active) .control__item--dot2 .control__circle,
+#dot3:checked ~ .control__container:not(:active) .control__item--dot3 .control__circle,
+#dot4:checked ~ .control__container:not(:active) .control__item--dot4 .control__circle {
     background: none;
 }
+
 @keyframes move-right {
     0% {
         transform: translateX(1000px); 
