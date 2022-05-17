@@ -1,0 +1,174 @@
+@font-face {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''),
+         url('assets/fonts/ubuntu-v20-latin_cyrillic-regular.woff2') format('woff2'), 
+         url('assets/fonts/ubuntu-v20-latin_cyrillic-regular.woff') format('woff'); 
+}
+
+body {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 19rem;
+    height: 100vh;
+    margin: 0;
+    background-color: #000000;
+    background-image: url(assets/background-space.jpg);
+    background-repeat: round;
+    background-size: cover;
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+}
+
+.main {
+    padding: 5rem 1rem;
+}
+
+.slider {
+    width: 80%;
+    max-width: 62rem;
+    margin: 0 auto;
+    padding: 1.5rem;
+    background-color: #25282a;
+    border-radius: 0.5rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr minmax(5rem, auto);
+    grid-template-areas: 
+    "slides slides"
+    "titles controls";
+    gap: 1rem;
+    align-items: start;
+    overflow: hidden;
+}
+
+.dot {
+    display: none;
+}
+
+.slide__container {
+    width: 100%;
+    grid-area: slides;
+    justify-self: center;
+}
+.slide__img {
+    width: 100%;
+    height: 31rem;
+    border-radius: 0.5rem;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+    display: none;
+}
+.slide__img--slide1 {
+    background-image: url(assets/slide-universe.jpg);
+}
+.slide__img--slide2 {
+    background-image: url(assets/slide-black-hole.png);
+}
+.slide__img--slide3 {
+    background-image: url(assets/slide-planets.png);
+}
+.slide__img--slide4 {
+    background-image: url(assets/slide-meme.png);
+}
+
+.title__container {
+    grid-area: titles;
+    overflow: hidden;
+}
+.title__text {
+    color: #ffffff;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    display: none;
+}
+
+.control__container {
+    grid-area: controls;
+    justify-self: end;
+    display: flex;
+}
+.control__item {
+    padding: 0.5rem;
+    cursor: pointer;
+}
+.control__circle {
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    border: 0.2rem solid #71abfe;
+    background: #71abfe;
+    transition: all 0.3s;
+}
+.control__item:hover .control__circle{
+    background-color: #ffffff;
+    border-color: #ffffff;
+}
+.control__item:active .control__circle{
+    background-color: #8c8d17;
+}
+
+/* Animation styles start */
+#dot1:checked ~ .slide__container .slide__img--slide1,
+#dot2:checked ~ .slide__container .slide__img--slide2,
+#dot3:checked ~ .slide__container .slide__img--slide3,
+#dot4:checked ~ .slide__container .slide__img--slide4 {
+    display: block;
+    animation-name: move-right;
+    animation-duration: 0.5s;
+}
+#dot1:checked ~ .title__container .title__text--text1,
+#dot2:checked ~ .title__container .title__text--text2,
+#dot3:checked ~ .title__container .title__text--text3,
+#dot4:checked ~ .title__container .title__text--text4 {
+    display: block;
+    animation-name: move-right;
+    animation-duration: 0.5s;
+}
+#dot1:checked ~ .control__container:not(:active) .control__item--dot1 .control__circle,
+#dot2:checked ~ .control__container:not(:active) .control__item--dot2 .control__circle,
+#dot3:checked ~ .control__container:not(:active) .control__item--dot3 .control__circle,
+#dot4:checked ~ .control__container:not(:active) .control__item--dot4 .control__circle {
+    background: none;
+}
+
+@keyframes move-right {
+    0% {
+        transform: translateX(1000px); 
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+/* Animation styles end */
+
+@media screen and (max-width: 767px) {
+    .slider {
+        padding: 1rem;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto minmax(3rem, auto);
+        grid-template-areas: 
+        "slides"
+        "controls"
+        "titles";
+    }
+    .slide__img {
+        height: 50vw;
+    }
+    .control__container {
+        justify-self: center;
+    }
+    .title__text {
+        font-size: 1rem;
+    }
+    .control__circle {
+        width: 0.5rem;
+        height: 0.5rem;
+    }
+}
